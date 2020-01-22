@@ -1,0 +1,154 @@
+<html>
+    <head>
+        <title>Lotus</title>
+        <link rel="stylesheet" href="bootstrap.min.css">
+        <script src="jquery-3.4.1.min.js"></script>
+        <script src="md5.min.js"></script>
+        <style>
+            .bg {
+                background: url('bkg.jpg');
+                height:600px;
+                text-align: center;
+                line-height: 600px;
+            }
+            .bg-blur {
+                float: left;
+                width: 100%;
+                background-position: center;
+                background-size: cover;
+                -webkit-filter: blur(15px);
+                -moz-filter: blur(15px);
+                -o-filter: blur(15px);
+                -ms-filter: blur(15px);
+                filter: blur(15px);
+            }
+            .content-front {
+                position:absolute;
+                left: 10px;
+                right: 10px;
+                height:600px;
+                line-height: 600px;
+                text-align: center;
+            }
+            li {
+                text-align: center;
+                background-color: #fff0 !important;
+                list-style-type: none;
+            }
+        </style>
+        <script>
+            const candidates = new Set([]);
+            const luckies = new Set([]);
+            let timer = null;
+            let running = false;
+            let lucky_li = null;
+            let delay = 20;
+
+            function show_candidates() {
+                $('#candidates').empty();
+                // $('#candidates_label').text('Candidates ('+candidates.size+')');
+                for (let can of candidates) {
+                    const id = md5(can);
+                    const can_li = $('<li></li>');
+                    can_li.attr('id', 'li_can_' + id);
+                    can_li.addClass('list-group-item');
+                    can_li.text(can);
+                    can_li.bind('click', (e) => {
+                        $('#candidates_td').remove();
+                        e.preventDefault();
+                    });
+                    $('#candidates').append(can_li);
+                }
+            }
+
+            function add_candidate() {
+                const input_value = $('#name').val().trim();
+                const splited = input_value.split('\\');
+                
+                for (let name of splited) {
+                    if (!RegExp('^\s*$').test(name)) {
+                        candidates.add(name);
+                    }
+                }
+                show_candidates();
+                $('#name').focus();
+                $('#name').select();
+            }
+
+            function timer_func() {
+                const cur_can = (Array.from(candidates))[0];
+                lucky_li.text(cur_can);
+                candidates.delete(cur_can);
+                candidates.add(cur_can);
+                delay += 50;
+                if (delay >= 460 && !luckies.has(cur_can)) {
+                    luckies.add(cur_can);
+                    candidates.delete(cur_can);
+                    // $('#luckies_label').text('Luckies ('+luckies.size+')');
+                    delay = 20;
+                    return;
+                } else {
+                    setTimeout(timer_func, delay);
+                }
+            }
+            
+            function go() {
+                if (running) {
+                    clearInterval(timer);
+                    running = false;
+                    setTimeout(timer_func, delay);
+                    return;
+                }
+                const id = md5('' + Date.now());
+                lucky_li = $('<li></li>');
+                lucky_li.attr('id', id);
+                lucky_li.addClass('list-group-item');
+                $('#luckies').append(lucky_li);
+                timer = setInterval(() => {
+                    const cur_can = (Array.from(candidates))[0];
+                    lucky_li.text(cur_can);
+                    candidates.delete(cur_can);
+                    candidates.add(cur_can);
+                }, 20);
+                running = true;
+            }
+        </script>
+    </head>
+    <body>
+        <!-- <div class="bg bg-blur"></div> -->
+        <div class="container d-flex justify-content-center content-front" style="margin-top: 5%;">
+            <form>
+                <div class="form-group row justify-content-center">
+                    <h1 id="title">Lotus</h1>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <div class="form-group mx-sm-3 mb-2">
+                        <input type="text" class="form-control" id="name" placeholder="Candidates">
+                    </div>
+                    <button class="btn btn-primary" style="display: none;" onclick="add_candidate();return false;"></button>
+                    <button class="btn btn-success mb-2" onclick="go();return false;">GO</button>
+                </div>
+                <div class="form-group row">
+                    <table class="table">
+                        <thead>
+                            <!-- <tr>
+                                <th scope="col" id="candidates_label">Candidates</th>
+                                <th scope="col" id="luckies_label">Luckies</th>
+                            </tr> -->
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="candidates_td">
+                                    <ul id='candidates' class="list-group list-group-flush"></ul>
+                                </td>
+                                <td>
+                                    <ul id="luckies" class="list-group list-group-flush"></ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

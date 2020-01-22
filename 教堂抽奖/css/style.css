@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url('../img/bkg.png');
+  font-family: Roboto, sans-serif, arial;
+}
+
+#btn_lottery {
+  height: 50px;
+  line-height: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: .3em;
+  box-shadow: 0 1px white inset;
+  text-align: center;
+  text-shadow: 0 1px 1px black;
+  color: white;
+  font-weight: bold;
+  background-image: linear-gradient(#f5c153, #ea920d);
+}
+
+.panel {
+  height: 450px;
+  line-height: 450px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border: 1px solid transparent;
+  transform: translate(-50%, -50%);
+  font-size: 445px;
+  background: transparent;
+  z-index: 2;
+  width: 750px;
+}
+
+.panel .digit {
+  width: 250px;
+  line-height: 450px;
+  font-size: 445px;
+  height: 450px;
+  overflow: hidden;
+  display: inline-block;
+  border: none;
+  float: left;
+  box-sizing: border-box;
+}
+
+.panel .digit ul {
+  transition: margin-top .5s ease;
+}
+
+.panel .digit+.digit {
+  border-left: 1px solid transparent;
+}
+
+.panel .digit li {
+  width: 250px;
+  height: 450px;
+  color: white;
+  text-align: center;
+}
+
+.setting {
+  position: absolute;
+  left: 50%;
+  top: 90%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.setting #custom-number {
+  height: 50px;
+  width: 250px;
+  line-height: 50px;
+  font-size: 45px;
+  background: white;
+  /* border: 1px solid transparent; */
+  color: black;
+}
+
+.setting #custom-number::placeholder {
+  color: darkgrey;
+}
+
+.setting #error:not(:empty) {
+  padding: 5px;
+  color: white;
+  border-bottom: 2px solid white;
+}
+
+.title {
+  position: absolute;
+  height: 80px;
+  line-height: 80px;
+  font-size: 80px;
+  left: 50%;
+  top: 10%;
+  color: lightblue;
+  transform: translate(-50%, -50%);
+  background: -webkit-linear-gradient(left, lightblue, #FFBBAA);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.result {
+  position: absolute;
+  top: 20%;
+  right: 3%;
+  font-size: 40px;
+  color: white;
+  text-align: right;
+}
+
+.result li {
+  list-style: none;
+}
