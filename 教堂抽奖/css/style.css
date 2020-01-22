@@ -4,7 +4,8 @@
 }
 
 body {
-  background-image: url('../img/bkg.png');
+  background-image: url('../img/bkg-2020.png');
+  background-size:cover;
   font-family: Roboto, sans-serif, arial;
 }
 
@@ -24,14 +25,14 @@ body {
 }
 
 .panel {
-  height: 450px;
-  line-height: 450px;
+  height: 350px;
+  line-height: 350px;
   position: absolute;
   left: 50%;
   top: 50%;
   border: 1px solid transparent;
   transform: translate(-50%, -50%);
-  font-size: 445px;
+  font-size: 350px;
   background: transparent;
   z-index: 2;
   width: 750px;
@@ -39,9 +40,9 @@ body {
 
 .panel .digit {
   width: 250px;
-  line-height: 450px;
-  font-size: 445px;
-  height: 450px;
+  line-height: 400px;
+  font-size: 350px;
+  height: 350px;
   overflow: hidden;
   display: inline-block;
   border: none;
@@ -59,7 +60,7 @@ body {
 
 .panel .digit li {
   width: 250px;
-  height: 450px;
+  height: 350px;
   color: white;
   text-align: center;
 }
@@ -108,13 +109,22 @@ body {
 
 .result {
   position: absolute;
-  top: 20%;
-  right: 3%;
-  font-size: 40px;
-  color: white;
-  text-align: right;
+  top: 32%;
+  font-size: 30px;
+  color: rgb(194, 23, 23);
+  text-align: center;
+}
+
+.result_l {
+  left: 10%;
+}
+
+.result_r {
+  right: 10%;
 }
 
 .result li {
   list-style: none;
+  font-size: 60px;
+  margin-top: -15px;
 }

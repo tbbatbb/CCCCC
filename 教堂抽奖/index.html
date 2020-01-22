@@ -7,12 +7,12 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="js/jquery.js"></script>
   <title>抽奖抽奖</title>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <h1 class="title">幸运抽抽抽</h1>
+  <!-- 再见了标题 郑老板决定2020年不要你了 你别怪我 打她去 -->
+  <!-- <h1 class="title">幸运抽抽抽</h1> -->
   <div class="panel">
     <div class="digit">
       <ul>
@@ -34,14 +34,30 @@
     <table>
       <tr>
         <th><input type="text" id="custom-number" placeholder="0-999" max="999" min="0"></th>
+        <th></th>
         <th><button id="btn_lottery" onclick="toggle_lottery()"> 谁最幸运 </button></th>
         <th><div class="error" id="error"></div></th>
       </tr>
     </table>
   </div>
-  <div class="result">
-    <p>幸运鹅</p>
-    <ul id="result_ul">
+  <div class="result result_l">
+    <!-- <p>幸运鹅</p> -->
+    <ul id="result_ul_l">
+      <li>41</li>
+      <li>41</li>
+      <li>41</li>
+      <li>41</li>
+      <li>41</li>
+    </ul>
+  </div>
+  <div class="result result_r">
+    <!-- <p>幸运鹅</p> -->
+    <ul id="result_ul_r">
+      <li>41</li>
+      <li>41</li>
+      <li>41</li>
+      <li>41</li>
+      <li>41</li>
     </ul>
   </div>
 </body>

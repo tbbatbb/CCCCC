@@ -27,7 +27,8 @@ function addResult(res) {
   result.add(res);
   var result_li = document.createElement('li');
   result_li.innerText = res;
-  document.getElementById('result_ul').appendChild(result_li);
+  var ele_id = (result.size % 2 === 1) ? 'result_ul_l' :'result_ul_r';
+  document.getElementById(ele_id).appendChild(result_li);
 }
 
 function toggle_lottery() {
